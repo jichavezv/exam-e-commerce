@@ -8,11 +8,11 @@
 		<version>3.2.7-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.metaphorce.exam.ecommerce</groupId>
-	<artifactId>exam-e-commerce</artifactId>
+	<groupId>com.metaphorce.exam.ecommerce.product</groupId>
+	<artifactId>exam-e-commerce-product</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Exam E-commerce</name>
-	<description>Project for Exam on Booster Java SR</description>
+	<name>Exam E-commerce Product</name>
+	<description>Microservice for Products</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
