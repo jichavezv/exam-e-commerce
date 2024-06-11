@@ -2,6 +2,7 @@ package com.metaphorce.exam.ecommerce.product.model;
 
 import com.metaphorce.exam.ecommerce.model.BaseEntity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,9 @@ import lombok.NoArgsConstructor;
 public class Discount extends BaseEntity {
 	private String name;
 	private String desc;
+	
+	@Column(name = "discount_percent")
 	private Double discountPercent;
+	
 	private Boolean active;
 }
