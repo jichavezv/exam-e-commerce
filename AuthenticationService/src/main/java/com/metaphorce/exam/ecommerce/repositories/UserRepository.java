@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * Repository for performing CRUD operations on User entities.
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, String>
+public interface UserRepository extends JpaRepository<User, Long>
 {
     /**
      * Get a list names of all users.
