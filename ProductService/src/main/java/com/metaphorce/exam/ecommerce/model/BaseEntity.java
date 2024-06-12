@@ -2,6 +2,9 @@ package com.metaphorce.exam.ecommerce.model;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,7 +18,9 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@CreationTimestamp
 	private LocalDateTime created_at;
+	
+	@UpdateTimestamp
 	private LocalDateTime modified_at;
-	private LocalDateTime deleted_at;
 }

@@ -19,5 +19,5 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class Category extends BaseEntity {
 	private String name;
-	private String desc;
+	private String description;
 }

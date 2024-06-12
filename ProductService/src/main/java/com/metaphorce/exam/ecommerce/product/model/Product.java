@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class Product extends BaseEntity {
 	private String name;
-	private String desc;
+	private String description;
 	private String SKU;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -36,6 +36,6 @@ public class Product extends BaseEntity {
 	private Double price;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "inventory_id")
+	@JoinColumn(name = "discount_id")
 	private Discount discount;
 }

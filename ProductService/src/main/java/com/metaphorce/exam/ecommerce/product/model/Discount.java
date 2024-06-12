@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class Discount extends BaseEntity {
 	private String name;
-	private String desc;
+	private String description;
 	
 	@Column(name = "discount_percent")
 	private Double discountPercent;
