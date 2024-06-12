@@ -25,7 +25,7 @@ public class SignUpRequest
      * The username of the new user to sign up.
      */
     @NotBlank
-    @Size(min = 2, max = 48)
+    @Size(min = 2, max = 64)
     private String username;
 
     /**
@@ -49,7 +49,7 @@ public class SignUpRequest
      */
     @NotBlank
     @Email
-    @Size(max = 64)
+    @Size(max = 128)
     private String email;
 
     /**
