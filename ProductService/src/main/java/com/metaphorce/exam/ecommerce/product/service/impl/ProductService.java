@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.metaphorce.exam.ecommerce.product.model.Product;
+import com.metaphorce.exam.ecommerce.product.model.impl.Product;
 import com.metaphorce.exam.ecommerce.product.repository.ProductRepository;
 import com.metaphorce.exam.ecommerce.product.service.IService;
 

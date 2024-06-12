@@ -1,4 +1,4 @@
-package com.metaphorce.exam.ecommerce.model;
+package com.metaphorce.exam.ecommerce.product.model;
 
 import java.time.LocalDateTime;
 

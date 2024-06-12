@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.metaphorce.exam.ecommerce.product.model.Category;
+import com.metaphorce.exam.ecommerce.product.model.impl.Category;
 import com.metaphorce.exam.ecommerce.product.service.impl.CategoryService;
 
 import lombok.extern.slf4j.Slf4j;

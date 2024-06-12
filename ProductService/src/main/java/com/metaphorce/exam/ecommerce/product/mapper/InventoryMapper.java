@@ -3,7 +3,7 @@ package com.metaphorce.exam.ecommerce.product.mapper;
 import org.mapstruct.Mapper;
 
 import com.metaphorce.exam.ecommerce.product.dto.InventoryDTO;
-import com.metaphorce.exam.ecommerce.product.model.Inventory;
+import com.metaphorce.exam.ecommerce.product.model.impl.Inventory;
 
 @Mapper(componentModel = "spring")
 public interface InventoryMapper {

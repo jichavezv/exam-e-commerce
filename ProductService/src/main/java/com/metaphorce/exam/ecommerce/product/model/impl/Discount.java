@@ -1,6 +1,6 @@
-package com.metaphorce.exam.ecommerce.product.model;
+package com.metaphorce.exam.ecommerce.product.model.impl;
 
-import com.metaphorce.exam.ecommerce.model.BaseEntity;
+import com.metaphorce.exam.ecommerce.product.model.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

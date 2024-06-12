@@ -3,7 +3,7 @@ package com.metaphorce.exam.ecommerce.product.mapper;
 import org.mapstruct.Mapper;
 
 import com.metaphorce.exam.ecommerce.product.dto.CategoryDTO;
-import com.metaphorce.exam.ecommerce.product.model.Category;
+import com.metaphorce.exam.ecommerce.product.model.impl.Category;
 
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {

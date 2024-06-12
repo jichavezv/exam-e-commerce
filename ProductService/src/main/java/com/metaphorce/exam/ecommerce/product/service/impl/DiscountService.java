@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.metaphorce.exam.ecommerce.product.model.Discount;
+import com.metaphorce.exam.ecommerce.product.model.impl.Discount;
 import com.metaphorce.exam.ecommerce.product.repository.DiscountRepository;
 import com.metaphorce.exam.ecommerce.product.service.IService;
 
