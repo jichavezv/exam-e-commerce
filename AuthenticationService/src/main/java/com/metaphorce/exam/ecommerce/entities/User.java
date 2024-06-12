@@ -40,7 +40,7 @@ public class User
     /**
      * The username of the user.
      */
-    @Column(nullable = false, length = 48)
+    @Column(nullable = false, length = 64, unique=true)
     private String username;
 
     /**
@@ -58,7 +58,7 @@ public class User
     /**
      * The email address of the user.
      */
-    @Column(nullable = false, length = 64)
+    @Column(nullable = false, length = 128, unique=true)
     private String email;
 
     /**
