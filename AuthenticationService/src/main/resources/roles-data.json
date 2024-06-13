@@ -1,0 +1,10 @@
+[
+    {
+        "_class": "com.metaphorce.exam.ecommerce.entities.Role",
+        "name": "seller"
+    },
+    {
+        "_class": "com.metaphorce.exam.ecommerce.entities.Role",
+        "name": "buyer"
+    }
+]
