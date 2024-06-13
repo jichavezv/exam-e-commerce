@@ -10,6 +10,7 @@ import com.metaphorce.exam.ecommerce.product.model.impl.Category;
 import com.metaphorce.exam.ecommerce.product.repository.CategoryRepository;
 import com.metaphorce.exam.ecommerce.product.service.IService;
 
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -18,6 +19,7 @@ public class CategoryService implements IService<Category> {
 	@Autowired
 	private CategoryRepository repository;
 
+	@Transactional
 	@Override
 	public Category create(Category newData) {
 		// TODO Auto-generated method stub
@@ -25,6 +27,7 @@ public class CategoryService implements IService<Category> {
 		return repository.save(newData);
 	}
 
+	@Transactional
 	@Override
 	public Optional<Category> get(Integer id) {
 		// TODO Auto-generated method stub
@@ -32,6 +35,7 @@ public class CategoryService implements IService<Category> {
 		return repository.findById(id);
 	}
 
+	@Transactional
 	@Override
 	public List<Category> getAll() {
 		// TODO Auto-generated method stub
@@ -39,6 +43,7 @@ public class CategoryService implements IService<Category> {
 		return repository.findAll();
 	}
 
+	@Transactional
 	@Override
 	public Category update(Integer id, Category updateData) {
 		// TODO Auto-generated method stub
@@ -48,6 +53,7 @@ public class CategoryService implements IService<Category> {
 		return repository.save(updateData);
 	}
 
+	@Transactional
 	@Override
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub

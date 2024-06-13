@@ -6,43 +6,48 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.metaphorce.exam.ecommerce.product.model.impl.Category;
-import com.metaphorce.exam.ecommerce.product.service.impl.CategoryService;
+import com.metaphorce.exam.ecommerce.product.model.impl.Discount;
+import com.metaphorce.exam.ecommerce.product.service.impl.DiscountService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
 @Slf4j
-public class CategoryServiceTest {
+public class DiscountServiceTest {
 	@Autowired
-	private CategoryService service;
+	private DiscountService service;
 	
-	private Category test;
+	private Discount test;
 	
 	@BeforeEach
 	public void setUp() {
-		test = service.create(Category.builder()
+		test = service.create(Discount.builder()
 				.name("Test")
 				.description("Description Test")
+				.active(true)
+				.discountPercent(new Random().nextDouble(100.0))
 				.build());
 	}
 	
 	@Test
-	public void createCategoryTest() {
-		Category data = Category.builder()
+	public void createDiscountTest() {
+		Discount data = Discount.builder()
 				.name("Test")
 				.description("Description Test")
+				.active(true)
+				.discountPercent(new Random().nextDouble(100.0))
 				.build();
 		
 		log.info("Data Test --> " + data);
 		
-		Category newData = service.create(data);
+		Discount newData = service.create(data);
 		
 		log.info("Create --> " + newData);
 		
@@ -51,8 +56,8 @@ public class CategoryServiceTest {
 	}
 	
 	@Test
-	public void getCategoryTest() {
-		Category read = service.get(test.getId()).get();
+	public void getDiscountTest() {
+		Discount read = service.get(test.getId()).get();
 		log.info("Read --> " + read);
 		
 		assertNotNull(read);
@@ -60,19 +65,21 @@ public class CategoryServiceTest {
 	}
 	
 	@Test
-	public void listCategories() {
-		List<Category> data = service.getAll();
+	public void listDiscounts() {
+		List<Discount> data = service.getAll();
 		log.info("Read --> " + data);
 		
 		assertNotNull(data);
 	}
 	
 	@Test
-	public void updateCategory() {
+	public void updateDiscount() {
 		test.setName("Name modified");
 		test.setDescription("Desc modified");
+		test.setActive(false);
+		test.setDiscountPercent(new Random().nextDouble(100.0));
 		
-		Category update = service.update(test.getId(), test);
+		Discount update = service.update(test.getId(), test);
 		log.info("Update --> " + update);
 		
 		assertNotNull(update);
@@ -80,13 +87,14 @@ public class CategoryServiceTest {
 	}
 	
 	@Test
-	public void deleteCategory() {
+	public void deleteDiscount() {
 		log.info("Delete --> " + test);
 		
 		service.delete(test.getId());
 		
-		Optional<Category> delete = service.get(test.getId());
+		Optional<Discount> delete = service.get(test.getId());
 		
 		assertFalse(delete.isPresent());
 	}
+
 }
