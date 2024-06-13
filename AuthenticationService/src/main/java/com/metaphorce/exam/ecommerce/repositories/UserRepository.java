@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long>
      *
      * @return a List of Strings containing the names of all users.
      */
-    @Query("select u.name from User u")
+    @Query("select u.username from User u")
     List<String> findNames();
 
     /**
@@ -32,10 +32,10 @@ public interface UserRepository extends JpaRepository<User, Long>
     /**
      * Finds a user by name.
      *
-     * @param name the name of the user to find
+     * @param username the username of the user to find
      * @return an Optional object containing the User, if it exists
      */
-    public Optional<User> findByName(String name);
+    public Optional<User> findByUsername(String username);
 
     /**
      * Finds a user by email.
