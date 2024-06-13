@@ -32,7 +32,6 @@ public class SignUpRequest
      * The first name of the new user to sign up.
      */
     @NotBlank
-    @Email
     @Size(max = 64)
     private String firstName;
 
@@ -40,7 +39,6 @@ public class SignUpRequest
      * The last name of the new user to sign up.
      */
     @NotBlank
-    @Email
     @Size(max = 64)
     private String lastName;
 
@@ -56,7 +54,6 @@ public class SignUpRequest
      * The telephone of the new user to sign up.
      */
     @NotBlank
-    @Email
     @Size(max = 64)
     private String telephone;
 

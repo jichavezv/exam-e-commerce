@@ -33,7 +33,6 @@ public class UserRequest
      * The first name of the user.
      */
     @NotBlank
-    @Email
     @Size(max = 64)
     private String firstName;
 
@@ -41,7 +40,6 @@ public class UserRequest
      * The last name of the user.
      */
     @NotBlank
-    @Email
     @Size(max = 64)
     private String lastName;
 
@@ -57,7 +55,6 @@ public class UserRequest
      * The telephone of the user.
      */
     @NotBlank
-    @Email
     @Size(max = 64)
     private String telephone;
 
