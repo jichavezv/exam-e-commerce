@@ -30,8 +30,7 @@ public class SecurityConfig
                                                                 "/api/v1/auth/signup",
                                                                 "/api/v1/auth/generateToken")
                                    .permitAll())
-            .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/users/**",
-                                                                "/api/v1/bulk/**").authenticated())
+            .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/users/**").authenticated())
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
