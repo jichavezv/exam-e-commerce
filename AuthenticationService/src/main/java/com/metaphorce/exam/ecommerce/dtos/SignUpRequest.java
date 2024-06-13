@@ -63,12 +63,4 @@ public class SignUpRequest
     @NotBlank
     @Size(min = 6, max = 128)
     private String password;
-
-    /**
-     * The role of the new user to sign up.
-     */
-    @NotBlank
-    @Size(max = 64)
-    @Pattern(regexp="^(seller|buyer)$")
-    private String role;
 }

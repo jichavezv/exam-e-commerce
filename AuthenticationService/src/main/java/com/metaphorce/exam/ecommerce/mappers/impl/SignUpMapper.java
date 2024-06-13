@@ -34,7 +34,7 @@ public class SignUpMapper implements MapperI<User, SignUpResponse, SignUpRequest
             .email(request.getEmail())
             .telephone(request.getTelephone())
             .password(request.getPassword())
-            .role(roleService.getRoleByName(request.getRole()))
+            .role(roleService.getRoleByName("seller"))
             .build();
     }
 
