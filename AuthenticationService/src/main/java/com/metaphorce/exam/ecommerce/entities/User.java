@@ -9,11 +9,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 /**
  * Entity class representing a user.
@@ -72,5 +75,17 @@ public class User
      */
     @Column(nullable = false, length = 64)
     private String password;
+
+    /**
+     * The creation time of the user.
+     */
+    @CreationTimestamp
+    private LocalDateTime created_at;
+
+    /**
+     * The update time of the user.
+     */
+    @UpdateTimestamp
+    private LocalDateTime modified_at;
 
 }
