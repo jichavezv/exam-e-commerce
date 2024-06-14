@@ -1,4 +1,4 @@
-package com.metaphorce.exam.ecommerce.product.service;
+package com.metaphorce.exam.ecommerce.product.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -12,7 +12,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 
+import com.metaphorce.exam.ecommerce.product.dto.ProductDTO;
+import com.metaphorce.exam.ecommerce.product.mapper.ProductMapper;
 import com.metaphorce.exam.ecommerce.product.model.impl.Category;
 import com.metaphorce.exam.ecommerce.product.model.impl.Discount;
 import com.metaphorce.exam.ecommerce.product.model.impl.Inventory;
@@ -26,7 +29,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
 @Slf4j
-public class ProductServiceTest {
+public class ProductControllerTest {
+	@Autowired
+	private ProductController controller;
+	
 	@Autowired
 	private ProductService service;
 	
@@ -72,17 +78,18 @@ public class ProductServiceTest {
 	
 	@Test
 	public void createProductTest() {
-		Product data = Product.builder()
+		ProductDTO data = ProductDTO.builder()
 				.name("Test")
 				.description("Description Test")
-				.category(test.getCategory())
-				.inventory(test.getInventory())
-				.discount(test.getDiscount())
+				.categoryId(test.getCategory().getId())
+				.inventoryId(test.getInventory().getId())
+				.discountId(test.getDiscount().getId())
 				.build();
 		
 		log.info("Data Test --> " + data);
 		
-		Product newData = service.create(data);
+		ResponseEntity<ProductDTO> response = controller.createProduct(data);
+		ProductDTO newData = response.getBody();
 		
 		log.info("Create --> " + newData);
 		
@@ -92,7 +99,9 @@ public class ProductServiceTest {
 	
 	@Test
 	public void getProductTest() {
-		Product read = service.get(test.getId()).get();
+		ResponseEntity<ProductDTO> response = controller.getProduct(test.getId());
+		ProductDTO read = response.getBody();
+		
 		log.info("Read --> " + read);
 		
 		assertNotNull(read);
@@ -101,7 +110,9 @@ public class ProductServiceTest {
 	
 	@Test
 	public void listProducts() {
-		List<Product> data = service.getAll();
+		ResponseEntity<List<ProductDTO>> response = controller.getAllProducts();
+		List<ProductDTO> data = response.getBody();
+		
 		log.info("Read --> " + data);
 		
 		assertNotNull(data);
@@ -112,7 +123,9 @@ public class ProductServiceTest {
 		test.setName("Name modified");
 		test.setDescription("Desc modified");
 		
-		Product update = service.update(test.getId(), test);
+		ResponseEntity<ProductDTO> response = controller.updateProduct(test.getId(), ProductMapper.mapper.toDTO(test));
+		ProductDTO update = response.getBody();
+		
 		log.info("Update --> " + update);
 		
 		assertNotNull(update);
@@ -123,7 +136,7 @@ public class ProductServiceTest {
 	public void deleteProduct() {
 		log.info("Delete --> " + test);
 		
-		service.delete(test.getId());
+		controller.deleteProduct(test.getId());
 		
 		Optional<Product> delete = service.get(test.getId());
 		

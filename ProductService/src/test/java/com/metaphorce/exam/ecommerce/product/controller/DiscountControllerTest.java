@@ -1,4 +1,4 @@
-package com.metaphorce.exam.ecommerce.product.service;
+package com.metaphorce.exam.ecommerce.product.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -12,7 +12,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 
+import com.metaphorce.exam.ecommerce.product.dto.DiscountDTO;
+import com.metaphorce.exam.ecommerce.product.mapper.DiscountMapper;
 import com.metaphorce.exam.ecommerce.product.model.impl.Discount;
 import com.metaphorce.exam.ecommerce.product.service.impl.DiscountService;
 
@@ -20,7 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
 @Slf4j
-public class DiscountServiceTest {
+public class DiscountControllerTest {
+	@Autowired
+	private DiscountController controller;
+	
 	@Autowired
 	private DiscountService service;
 	
@@ -38,7 +44,7 @@ public class DiscountServiceTest {
 	
 	@Test
 	public void createDiscountTest() {
-		Discount data = Discount.builder()
+		DiscountDTO data = DiscountDTO.builder()
 				.name("Test")
 				.description("Description Test")
 				.active(true)
@@ -47,7 +53,8 @@ public class DiscountServiceTest {
 		
 		log.info("Data Test --> " + data);
 		
-		Discount newData = service.create(data);
+		ResponseEntity<DiscountDTO> response = controller.createDiscount(data);
+		DiscountDTO newData = response.getBody();
 		
 		log.info("Create --> " + newData);
 		
@@ -57,7 +64,9 @@ public class DiscountServiceTest {
 	
 	@Test
 	public void getDiscountTest() {
-		Discount read = service.get(test.getId()).get();
+		ResponseEntity<DiscountDTO> response = controller.getDiscount(test.getId());
+		DiscountDTO read = response.getBody();
+		
 		log.info("Read --> " + read);
 		
 		assertNotNull(read);
@@ -66,7 +75,9 @@ public class DiscountServiceTest {
 	
 	@Test
 	public void listDiscounts() {
-		List<Discount> data = service.getAll();
+		ResponseEntity<List<DiscountDTO>> response = controller.getAllDiscounts();
+		List<DiscountDTO> data = response.getBody();
+		
 		log.info("Read --> " + data);
 		
 		assertNotNull(data);
@@ -79,7 +90,9 @@ public class DiscountServiceTest {
 		test.setActive(false);
 		test.setDiscountPercent(new Random().nextDouble(100.0));
 		
-		Discount update = service.update(test.getId(), test);
+		ResponseEntity<DiscountDTO> response = controller.updateDiscount(test.getId(), DiscountMapper.mapper.toDTO(test));
+		DiscountDTO update = response.getBody();
+		
 		log.info("Update --> " + update);
 		
 		assertNotNull(update);
@@ -90,7 +103,7 @@ public class DiscountServiceTest {
 	public void deleteDiscount() {
 		log.info("Delete --> " + test);
 		
-		service.delete(test.getId());
+		controller.deleteDiscount(test.getId());
 		
 		Optional<Discount> delete = service.get(test.getId());
 		

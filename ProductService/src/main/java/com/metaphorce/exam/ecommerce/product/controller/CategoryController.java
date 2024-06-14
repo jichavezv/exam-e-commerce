@@ -59,7 +59,7 @@ public class CategoryController {
 	 * @since Jun/11/2024 
 	 */
 	@GetMapping
-	public ResponseEntity<List<CategoryDTO>> getAllCategorys() {
+	public ResponseEntity<List<CategoryDTO>> getAllCategories() {
 		log.info("Get All Categorys ...");
 		ResponseEntity<List<CategoryDTO>> response = null;
 		List<Category> listCategorys = this.service.getAll();

@@ -59,7 +59,7 @@ public class InventoryController {
 	 * @since Jun/11/2024 
 	 */
 	@GetMapping
-	public ResponseEntity<List<InventoryDTO>> getAllInventorys() {
+	public ResponseEntity<List<InventoryDTO>> getAllInventories() {
 		log.info("Get All Inventorys ...");
 		ResponseEntity<List<InventoryDTO>> response = null;
 		List<Inventory> listInventorys = this.service.getAll();

@@ -3,6 +3,7 @@ package com.metaphorce.exam.ecommerce.product.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

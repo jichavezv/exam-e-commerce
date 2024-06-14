@@ -36,17 +36,17 @@ public class ProductController {
 	 * @since Jun/11/2024 
 	 */
 	@PostMapping
-	public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO ProductRequest) {
-		log.info("Product to create: " + ProductRequest);
+	public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productRequest) {
+		log.info("Product to create: " + productRequest);
 		ResponseEntity<ProductDTO> response = null;
-		Product newProduct = this.service.create(ProductMapper.mapper.toEntity(ProductRequest));
+		Product newProduct = this.service.create(ProductMapper.mapper.toEntity(productRequest));
 
 		if(newProduct != null) {
 			response = ResponseEntity.ok(ProductMapper.mapper.toDTO(newProduct));
 			log.info("Product created: " + newProduct);
 		} else {
 			response = ResponseEntity.badRequest().build();
-			log.info("Error to create Product: " + ProductRequest);
+			log.info("Error to create Product: " + productRequest);
 		}
 
 		return response;
@@ -86,9 +86,9 @@ public class ProductController {
 	@GetMapping("/{id}")
 	public ResponseEntity<ProductDTO> getProduct(@PathVariable Integer id) {
 		log.info("Get Product[" + id + "]");
-		return service.get(id).map((Product Product) -> {
-			log.info("Product found: " + Product);
-			return ResponseEntity.ok(ProductMapper.mapper.toDTO(Product));
+		return service.get(id).map((Product p) -> {
+			log.info("Product found: " + p);
+			return ResponseEntity.ok(ProductMapper.mapper.toDTO(p));
 		}).orElseGet(() -> {
 			log.warn("Product not found: " + id);
 			return ResponseEntity.notFound().build();

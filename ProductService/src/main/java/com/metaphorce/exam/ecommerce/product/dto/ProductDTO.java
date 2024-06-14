@@ -18,7 +18,7 @@ public class ProductDTO {
 	private String SKU;
 	private Double price;
 	
-	private CategoryDTO category;
-	private InventoryDTO inventory;
-	private DiscountDTO discount;
+	private Integer categoryId;
+	private Integer inventoryId;
+	private Integer discountId;
 }
