@@ -37,3 +37,7 @@ out/
 .vscode/
 
 .env
+
+# Ignore target directories for all modules
+/DiscoverService/target
+/GatewayService/target
